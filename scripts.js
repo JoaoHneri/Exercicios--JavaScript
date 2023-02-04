@@ -17,7 +17,7 @@ numérico para sistema de notas em caracteres tipo A B C D F
  * entre 70 - 79   -   C
  * entre 60 - 69   -   D
  * menor que 60    -   F
-
+*/
 
 
 
@@ -35,18 +35,17 @@ numérico para sistema de notas em caracteres tipo A B C D F
  }
  }
 
-avaliar(60);
- */
+// avaliar(60);
+
 
 //##################################################################################
-
 /*Crie um objeto que possuirá 2 propriedades, ambas do tipo array:
     * receitas: [] 
     * despesas: []
 Agora, crie uma função que irá calcular o total de receitas e 
 despesas e irá mostrar uma mensagem se a família está com 
 saldo positivo ou negativo, seguido do valor do saldo.
-
+*/
 
 let family = {
     ganhos: [1000],
@@ -78,10 +77,9 @@ function calculate(){
     console.log(`Seu saldo é ${mensage}: ${total}`)
 }
 
-calculate()
+// calculate()
 
-*/
-
+//##################################################################################
 function transformar(graus){
     const celsius = graus.toUpperCase().includes('C')
     const fahrenheint = graus.toUpperCase().includes('F')
@@ -102,6 +100,7 @@ function transformar(graus){
 
     return formula(novoGrau) + novoSimbol
 }
+/*
 try {
     console.log(transformar('10C'))
     console.log(transformar('50F'))
@@ -109,3 +108,91 @@ try {
 }catch(error){
     console.log(error.message)
 }
+*/
+
+//##################################################################################
+
+/* 
+    ∞ Buscando e contando dados em Arrays ∞
+    Baseado no Array de Livros por Categoria abaixo, faça os seguintes desafios
+        • Contar o número de categorias e o número de livros em cada categoria
+        • Contar o número de autores
+        • Mostrar livros do autor Auguto Cury
+        • Transformar a função acima em uma função que irá receber o nome do autor e devolver os livros desse autor.
+*/
+
+
+
+const booksByCategory = [
+    {
+        category: "Riqueza",
+        books: [
+            {
+                title: "Os segredos da mente milionária",
+                author: "T. Harv Eker",
+            },
+            {
+                title: "O homem mais rico da Babilônia",
+                author: "George S. Clason",
+            },
+            {
+                title: "Pai rico, pai pobre",
+                author: "Robert T. Kiyosaki e Sharon L. Lechter",
+            },
+        ],
+    },
+    {
+        category: "Inteligência Emocional",
+        books: [
+            {
+                title: "Você é Insubstituível",
+                author: "Augusto Cury",
+            },
+            {
+                title: "Ansiedade – Como enfrentar o mal do século",
+                author: "Augusto Cury",
+            },
+            {
+                title: "Os 7 hábitos das pessoas altamente eficazes",
+                author: "Stephen R. Covey",
+            },
+        ],
+    },
+];
+
+const totalCategory = booksByCategory.length
+console.log(totalCategory);
+for (let category of booksByCategory) {
+    console.log('Total de livros por categoria: ' + category.category)
+    console.log(category.books.length)
+}
+function autores(){
+    let authors = [];
+    for(let category of booksByCategory){
+        for(let book of category.books){
+            if(authors.indexOf(book.author) == -1){
+                authors.push(book.author)
+            }
+            
+        }
+    }
+    console.log("Quantidade de Autores: ",authors.length)
+}
+autores()
+
+function bookOfAuthor(author){
+    let books = [];
+
+    for(let category of booksByCategory){
+        for(let book of category.books){
+            if(book.author === author){
+                books.push(book.title)
+            }
+            
+        }
+    }
+    console.log(`Livros do ${author}: ${books.join(". ")}`)
+}
+
+bookOfAuthor('Augusto Cury')
+
